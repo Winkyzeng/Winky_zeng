@@ -52,7 +52,7 @@
       </div>
       <div id="resume-content-en" style="display:none;">
         <strong>Core Competencies:</strong><br>
-        8+ years of entrepreneurial experience across product, R&D, sales, and branding. Proven track record in global market expansion, business innovation, team leadership, and supply chain optimization.<br>
+        8+ years of entrepreneurial experience in product, R&D, sales, and branding. Proven track record in global market expansion, business innovation, team leadership, and supply chain optimization.<br>
         <div style="margin-top:16px;">
           <a href="experience.html">Experience</a> | <a href="projects.html">Projects</a>
         </div>
@@ -139,4 +139,12 @@
       if (links[code]) {
         document.getElementById('downloadLinks').innerHTML = '下载链接：<br>' + links[code];
       } else {
-        document.getElementById('downloadLinks').innerHTML = '<span style="color:#ff5252;">验证码错误，请联系微信
+        document.getElementById('downloadLinks').innerHTML = '<span style="color:#ff5252;">验证码错误，请联系微信或邮箱获取！</span>';
+      }
+    }
+    document.getElementById('avatar').onclick = function() {
+      showSection('resume');
+      window.scrollTo({top: 200, behavior: 'smooth'});
+    }
+    btnZh.click();
+  </script>

@@ -20,7 +20,9 @@
     .download-btn { background: #1e90ff; color: #fff; border: none; border-radius: 6px; padding: 10px 28px; font-size: 16px; cursor: pointer; margin-top: 16px; transition: background 0.2s;}
     .download-btn:hover { background: #00e6c3; color: #10131a;}
     .contact { margin-top: 32px; font-size: 15px; color: #b2ebf2;}
-    .music-player { margin: 32px 0 0 0;}
+    .nav-links { margin: 24px 0 0 0; font-size: 17px;}
+    .nav-links a { color: #00e6c3; text-decoration: underline; margin: 0 10px;}
+    .nav-links a:hover { color: #1e90ff;}
     .modal { display: none; position: fixed; z-index: 999; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); justify-content: center; align-items: center;}
     .modal-content { background: #222b3a; padding: 32px; border-radius: 12px; text-align: center; color: #fff; min-width: 280px; position: relative;}
     .modal input { padding: 8px; border-radius: 4px; border: 1px solid #00e6c3; margin-bottom: 12px; width: 80%; font-size: 16px;}
@@ -44,14 +46,16 @@
       <div id="resume-content-zh">
         <strong>核心价值：</strong><br>
         8年+创业实战，产研销全链路，全球市场开拓，创新项目孵化，团队领导与供应链优化。<br>
-        <span class="resume-link" onclick="showSection('experience')">工作经历</span> |
-        <span class="resume-link" onclick="showSection('projects')">项目案例</span>
+        <div style="margin-top:16px;">
+          <a href="experience-cn.html">工作经历</a> | <a href="projects-cn.html">项目案例</a>
+        </div>
       </div>
       <div id="resume-content-en" style="display:none;">
         <strong>Core Competencies:</strong><br>
         8+ years of entrepreneurial experience across product, R&D, sales, and branding. Proven track record in global market expansion, business innovation, team leadership, and supply chain optimization.<br>
-        <span class="resume-link" onclick="showSection('experience')">Experience</span> |
-        <span class="resume-link" onclick="showSection('projects')">Projects</span>
+        <div style="margin-top:16px;">
+          <a href="experience.html">Experience</a> | <a href="projects.html">Projects</a>
+        </div>
       </div>
     </div>
     <button class="download-btn" onclick="openModal()" id="download-btn">下载简历 PDF</button>
@@ -62,12 +66,8 @@
       微信：Winky_zeng<br>
       邮箱：winkyzeng@yeah.net
     </div>
-    <div class="music-player" id="music-player">
-      <iframe width="100%" height="120" scrolling="no" frameborder="no" allow="autoplay"
-        src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/347661464&color=%2300e6c3&inverse=false&auto_play=false&show_user=true"></iframe>
-      <div id="music-desc" style="color:#b2ebf2;font-size:13px;margin-top:4px;">
-        纯音乐推荐：Kevin MacLeod - "Cipher"（无版权，可自由使用）
-      </div>
+    <div class="nav-links" id="nav-links">
+      <a href="experience-cn.html">工作经历</a> | <a href="projects-cn.html">项目案例</a>
     </div>
   </div>
   <!-- 验证码弹窗 -->
@@ -91,7 +91,7 @@
     const modalTip = document.getElementById('modal-tip');
     const resumeZh = document.getElementById('resume-content-zh');
     const resumeEn = document.getElementById('resume-content-en');
-    const musicDesc = document.getElementById('music-desc');
+    const navLinks = document.getElementById('nav-links');
     btnZh.onclick = function() {
       btnZh.classList.add('active');
       btnEn.classList.remove('active');
@@ -103,7 +103,7 @@
       modalTip.innerText = '请输入验证码获取简历下载链接：';
       resumeZh.style.display = '';
       resumeEn.style.display = 'none';
-      musicDesc.innerText = '纯音乐推荐：Kevin MacLeod - "Cipher"（无版权，可自由使用）';
+      navLinks.innerHTML = '<a href="experience-cn.html">工作经历</a> | <a href="projects-cn.html">项目案例</a>';
     }
     btnEn.onclick = function() {
       btnEn.classList.add('active');
@@ -116,7 +116,7 @@
       modalTip.innerText = 'Enter the code to get the download link:';
       resumeZh.style.display = 'none';
       resumeEn.style.display = '';
-      musicDesc.innerText = 'Instrumental: Kevin MacLeod - "Cipher" (Royalty-free, free to use)';
+      navLinks.innerHTML = '<a href="experience.html">Experience</a> | <a href="projects.html">Projects</a>';
     }
     function showSection(section) {
       document.getElementById('resume-section').style.display = 'block';
@@ -139,15 +139,4 @@
       if (links[code]) {
         document.getElementById('downloadLinks').innerHTML = '下载链接：<br>' + links[code];
       } else {
-        document.getElementById('downloadLinks').innerHTML = '<span style="color:#ff5252;">验证码错误，请联系微信或邮箱获取！</span>';
-      }
-    }
-    document.getElementById('avatar').onclick = function() {
-      showSection('resume');
-      window.scrollTo({top: 200, behavior: 'smooth'});
-    }
-    btnZh.click();
-  </script>
-</body>
-
-</html>
+        document.getElementById('downloadLinks').innerHTML = '<span style="color:#ff5252;">验证码错误，请联系微信

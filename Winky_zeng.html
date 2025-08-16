@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>曾文芳 | Winky Zeng 个人博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body { background: #10131a; color: #e0f7fa; font-family: 'Segoe UI', Arial, sans-serif; margin: 0; padding: 0;}
+    .container { max-width: 600px; margin: 40px auto; background: #181f2b; border-radius: 16px; box-shadow: 0 4px 24px rgba(0,0,0,0.4); padding: 32px; text-align: center;}
+    .avatar { width: 120px; height: 120px; border-radius: 50%; border: 4px solid #00e6c3; margin: 0 auto 24px; background: url('https://i.pravatar.cc/120?img=3') center/cover no-repeat; box-shadow: 0 0 16px #00e6c3; cursor: pointer; transition: box-shadow 0.3s;}
+    .avatar:hover { box-shadow: 0 0 32px #1e90ff;}
+    .lang-switch { float: right; margin-top: -16px; margin-right: -16px;}
+    .lang-btn { background: #1e90ff; color: #fff; border: none; border-radius: 6px; padding: 6px 16px; margin-left: 8px; cursor: pointer; font-size: 14px; transition: background 0.2s;}
+    .lang-btn.active, .lang-btn:hover { background: #00e6c3; color: #10131a;}
+    h1 { color: #00e6c3; margin-bottom: 8px;}
+    .intro { margin-bottom: 24px; font-size: 18px; color: #b2ebf2;}
+    .resume-section { margin-bottom: 24px; text-align: left;}
+    .resume-link { color: #1e90ff; cursor: pointer; text-decoration: underline; transition: color 0.2s;}
+    .resume-link:hover { color: #00e6c3;}
+    .download-btn { background: #1e90ff; color: #fff; border: none; border-radius: 6px; padding: 10px 28px; font-size: 16px; cursor: pointer; margin-top: 16px; transition: background 0.2s;}
+    .download-btn:hover { background: #00e6c3; color: #10131a;}
+    .contact { margin-top: 32px; font-size: 15px; color: #b2ebf2;}
+    .music-player { margin: 32px 0 0 0;}
+    .modal { display: none; position: fixed; z-index: 999; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); justify-content: center; align-items: center;}
+    .modal-content { background: #222b3a; padding: 32px; border-radius: 12px; text-align: center; color: #fff; min-width: 280px; position: relative;}
+    .modal input { padding: 8px; border-radius: 4px; border: 1px solid #00e6c3; margin-bottom: 12px; width: 80%; font-size: 16px;}
+    .modal button { background: #00e6c3; color: #10131a; border: none; border-radius: 6px; padding: 8px 20px; font-size: 15px; cursor: pointer; margin-left: 8px;}
+    .close { position: absolute; top: 16px; right: 32px; font-size: 28px; color: #fff; cursor: pointer;}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="lang-switch">
+      <button class="lang-btn active" id="btn-zh">中文</button>
+      <button class="lang-btn" id="btn-en">English</button>
+    </div>
+    <div class="avatar" id="avatar"></div>
+    <h1 id="main-title">曾文芳</h1>
+    <div class="intro" id="intro">
+      跨界创新者，品牌生态运营与业务增长专家。<br>
+      <span class="resume-link" onclick="showSection('resume')">点击查看简历简介</span>
+    </div>
+    <div class="resume-section" id="resume-section" style="display:none;">
+      <div id="resume-content-zh">
+        <strong>核心价值：</strong><br>
+        8年+创业实战，产研销全链路，全球市场开拓，创新项目孵化，团队领导与供应链优化。<br>
+        <span class="resume-link" onclick="showSection('experience')">工作经历</span> |
+        <span class="resume-link" onclick="showSection('projects')">项目案例</span>
+      </div>
+      <div id="resume-content-en" style="display:none;">
+        <strong>Core Competencies:</strong><br>
+        8+ years of entrepreneurial experience across product, R&D, sales, and branding. Proven track record in global market expansion, business innovation, team leadership, and supply chain optimization.<br>
+        <span class="resume-link" onclick="showSection('experience')">Experience</span> |
+        <span class="resume-link" onclick="showSection('projects')">Projects</span>
+      </div>
+    </div>
+    <button class="download-btn" onclick="openModal()" id="download-btn">下载简历 PDF</button>
+    <div id="download-tip" style="margin-top:8px; color:#b2ebf2;">
+      请通过以下方式联系 Winky 获取最新下载码。
+    </div>
+    <div class="contact" id="contact">
+      微信：Winky_zeng<br>
+      邮箱：winkyzeng@yeah.net
+    </div>
+    <div class="music-player" id="music-player">
+      <iframe width="100%" height="120" scrolling="no" frameborder="no" allow="autoplay"
+        src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/347661464&color=%2300e6c3&inverse=false&auto_play=false&show_user=true"></iframe>
+      <div id="music-desc" style="color:#b2ebf2;font-size:13px;margin-top:4px;">
+        纯音乐推荐：Kevin MacLeod - "Cipher"（无版权，可自由使用）
+      </div>
+    </div>
+  </div>
+  <!-- 验证码弹窗 -->
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <div id="modal-tip">请输入验证码获取简历下载链接：</div>
+      <input type="text" id="codeInput" placeholder="输入验证码">
+      <button onclick="checkCode()">确定</button>
+      <div id="downloadLinks" style="margin-top:16px;"></div>
+    </div>
+  </div>
+  <script>
+    const btnZh = document.getElementById('btn-zh');
+    const btnEn = document.getElementById('btn-en');
+    const intro = document.getElementById('intro');
+    const mainTitle = document.getElementById('main-title');
+    const downloadBtn = document.getElementById('download-btn');
+    const downloadTip = document.getElementById('download-tip');
+    const contact = document.getElementById('contact');
+    const modalTip = document.getElementById('modal-tip');
+    const resumeZh = document.getElementById('resume-content-zh');
+    const resumeEn = document.getElementById('resume-content-en');
+    const musicDesc = document.getElementById('music-desc');
+    btnZh.onclick = function() {
+      btnZh.classList.add('active');
+      btnEn.classList.remove('active');
+      mainTitle.innerText = '曾文芳';
+      intro.innerHTML = '跨界创新者，品牌生态运营与业务增长专家。<br><span class="resume-link" onclick="showSection(\'resume\')">点击查看简历简介</span>';
+      downloadBtn.innerText = '下载简历 PDF';
+      downloadTip.innerText = '请通过以下方式联系 Winky 获取最新下载码。';
+      contact.innerHTML = '微信：Winky_zeng<br>邮箱：winkyzeng@yeah.net';
+      modalTip.innerText = '请输入验证码获取简历下载链接：';
+      resumeZh.style.display = '';
+      resumeEn.style.display = 'none';
+      musicDesc.innerText = '纯音乐推荐：Kevin MacLeod - "Cipher"（无版权，可自由使用）';
+    }
+    btnEn.onclick = function() {
+      btnEn.classList.add('active');
+      btnZh.classList.remove('active');
+      mainTitle.innerText = 'Winky Zeng';
+      intro.innerHTML = 'Cross-industry innovator, expert in brand ecosystem operations and business growth.<br><span class="resume-link" onclick="showSection(\'resume\')">Click to view resume summary</span>';
+      downloadBtn.innerText = 'Download Resume PDF';
+      downloadTip.innerText = 'Contact Winky via WeChat or Email to get the latest download code.';
+      contact.innerHTML = 'WeChat: Winky_zeng<br>Email: winkyzeng@yeah.net';
+      modalTip.innerText = 'Enter the code to get the download link:';
+      resumeZh.style.display = 'none';
+      resumeEn.style.display = '';
+      musicDesc.innerText = 'Instrumental: Kevin MacLeod - "Cipher" (Royalty-free, free to use)';
+    }
+    function showSection(section) {
+      document.getElementById('resume-section').style.display = 'block';
+    }
+    function openModal() {
+      document.getElementById('modal').style.display = 'flex';
+      document.getElementById('downloadLinks').innerHTML = '';
+      document.getElementById('codeInput').value = '';
+    }
+    function closeModal() {
+      document.getElementById('modal').style.display = 'none';
+    }
+    function checkCode() {
+      const code = document.getElementById('codeInput').value.trim();
+      const links = {
+        'china2024': '<a href="https://lark.cn/your-china-link" target="_blank" style="color:#00e6c3;">国内简历下载</a>',
+        'global2024': '<a href="https://lark.com/your-global-link" target="_blank" style="color:#00e6c3;">Global Resume Download</a>',
+        'allpdf': '<a href="https://lark.cn/your-allpdf-link" target="_blank" style="color:#00e6c3;">全部PDF下载</a>'
+      };
+      if (links[code]) {
+        document.getElementById('downloadLinks').innerHTML = '下载链接：<br>' + links[code];
+      } else {
+        document.getElementById('downloadLinks').innerHTML = '<span style="color:#ff5252;">验证码错误，请联系微信或邮箱获取！</span>';
+      }
+    }
+    document.getElementById('avatar').onclick = function() {
+      showSection('resume');
+      window.scrollTo({top: 200, behavior: 'smooth'});
+    }
+    btnZh.click();
+  </script>
+</body>
+</html>

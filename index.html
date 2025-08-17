@@ -7,7 +7,7 @@
   <style>
     body { background: #10131a; color: #e0f7fa; font-family: 'Segoe UI', Arial, sans-serif; margin: 0; padding: 0;}
     .container { max-width: 600px; margin: 40px auto; background: #181f2b; border-radius: 16px; box-shadow: 0 4px 24px rgba(0,0,0,0.4); padding: 32px; text-align: center;}
-    .avatar { width: 120px; height: 120px; border-radius: 50%; border: 4px solid #00e6c3; margin: 0 auto 24px; background: url('https://i.pravatar.cc/120?img=3') center/cover no-repeat; box-shadow: 0 0 16px #00e6c3; cursor: pointer; transition: box-shadow 0.3s;}
+    .avatar { width: 120px; height: 120px; border-radius: 50%; border: 4px solid #00e6c3; margin: 0 auto 24px; background: url('myphoto.jpg') center/cover no-repeat; box-shadow: 0 0 16px #00e6c3; cursor: pointer; transition: box-shadow 0.3s;}
     .avatar:hover { box-shadow: 0 0 32px #1e90ff;}
     .lang-switch { float: right; margin-top: -16px; margin-right: -16px;}
     .lang-btn { background: #1e90ff; color: #fff; border: none; border-radius: 6px; padding: 6px 16px; margin-left: 8px; cursor: pointer; font-size: 14px; transition: background 0.2s;}
@@ -28,6 +28,13 @@
     .modal input { padding: 8px; border-radius: 4px; border: 1px solid #00e6c3; margin-bottom: 12px; width: 80%; font-size: 16px;}
     .modal button { background: #00e6c3; color: #10131a; border: none; border-radius: 6px; padding: 8px 20px; font-size: 15px; cursor: pointer; margin-left: 8px;}
     .close { position: absolute; top: 16px; right: 32px; font-size: 28px; color: #fff; cursor: pointer;}
+    /* 能力矩阵表格简化样式 */
+    .matrix-table {width:100%;border-collapse:collapse;margin-top:18px;}
+    .matrix-table th, .matrix-table td {padding:8px 6px; border-bottom:1px solid #2c3e50; color:#e0f7fa;}
+    .matrix-table th {background:#22304a; color:#00e6c3;}
+    .matrix-table tr:nth-child(even) {background:#1a2233;}
+    .matrix-title {color:#00e6c3;font-weight: bold;text-align:left;margin-bottom:10px;}
+    .matrix-container {background:#181f2b;box-shadow:none;border-radius:10px;padding:18px 8px 8px 8px;margin-bottom:18px;}
   </style>
 </head>
 <body>
@@ -39,20 +46,70 @@
     <div class="avatar" id="avatar"></div>
     <h1 id="main-title">曾文芳</h1>
     <div class="intro" id="intro">
-      跨界创新者，品牌生态运营与业务增长专家。<br>
+      跨界创新者<br>
+      品牌生态运营与业务增长能手<br>
+      <span style="color:#ffd700;">寻求「品牌生态运营/复合型业务创新/GTM策略」相关岗位</span><br>
       <span class="resume-link" onclick="showSection('resume')">点击查看简历简介</span>
     </div>
     <div class="resume-section" id="resume-section" style="display:none;">
       <div id="resume-content-zh">
-        <strong>核心价值：</strong><br>
-        8年+创业实战，产研销全链路，全球市场开拓，创新项目孵化，团队领导与供应链优化。<br>
-        <div style="margin-top:16px;">
-          <a href="experience-cn.html">工作经历</a> | <a href="projects-cn.html">项目案例</a>
-        </div>
-      </div>
+        <strong>核心价值</strong><br>
+        8年+ 连续创业实战，贯穿产、研、销、推广全链路（跟单/生产/设计/销售/品牌运营/商业战略设计/外贸全流程/私域运营/红人矩阵/内容创业等），自驱试错 + 事事闭环，在服装、外贸、新媒体赛道持续突破：<br>
+        ● 全球市场开拓：主导开拓大洋洲、欧洲、美国高价值市场，与客户建立长达7年的稳定合作，为创新项目提供持续现金流支持<br>
+        ● 创新引擎构建：首创“虚拟真人试衣 + 预售 + 设计师孵化开成链”服装商城项目，解决行业难题，推动业务增长，构建可持续服装生态。在内容运营上，实现公众号与视频号的双突破，积累高质量粉丝，跑通变现链路<br>
+        ● 韧性领导力：带领远程团队突破资源限制，100% 交付红人矩阵、私域运营冷启动等复杂任务<br>
+        ● 供应链优化：订单交付准时率达90%以上，维护客户满意度95%+，运营成本15%<br>
+        <br> 
+        <!-- 能力矩阵深色风格开始 -->
+       <div class="matrix-container" style="background:#181f2b;box-shadow:none;border-radius:10px;padding:18px 8px 8px 8px;">
+       </style>
+       <div class="matrix-title">能力矩阵</div>
+     <table class="matrix-table" style="color:#e0f7fa;">
+      <thead>
+        <tr>
+          <th>能力维度</th>
+          <th>核心技能</th>
+          <th>实战案例</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>全链业务操盘</td>
+          <td>供应链管理、GTM策略、商业设计、跟单/生产/设计/销售/运营(服装领域)、外贸全流程、商业战略生态设计</td>
+          <td>服装领域多岗体验，SOHO外贸多年稳定营收，设计虚拟试衣+预售+设计师孵化开成链商城闭环</td>
+        </tr>
+        <tr>
+          <td>流量与品牌增长</td>
+          <td>私域体系搭建、红人矩阵运营、内容生态构建、视频号冷启动、KOL/KOC/UGC资源整合</td>
+          <td>新品牌私域运营+红人矩阵，公众号内容创新，视频号冷启动突破</td>
+        </tr>
+        <tr>
+          <td>创新模式落地</td>
+          <td>轻资产创业验证、虚拟商城生态构建、跨业务协同、外贸+服装+内容业务融合</td>
+          <td>用外贸业务为服装创新项目提供资金支持，虚拟购物商城创新，内容平台从0起号完成变现闭环验证</td>
+        </tr>
+        <tr>
+          <td>自驱管理与韧性</td>
+          <td>远程团队管控、困境业务盘活、闭环经验</td>
+          <td>带领8人远程团队完成私域运营、红人矩阵项目，SOHO外贸轻运营模式下业务稳定，多次盘活困境业务</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <!-- 能力矩阵深色风格结束 -->
+  <div style="margin-top:16px;">
+    <a href="experience-cn.html">工作经历</a> | <a href="projects-cn.html">项目案例</a>
+  </div>
+</div>
       <div id="resume-content-en" style="display:none;">
-        <strong>Core Competencies:</strong><br>
-        8+ years of entrepreneurial experience in product, R&D, sales, and branding. Proven track record in global market expansion, business innovation, team leadership, and supply chain optimization.<br>
+        <strong>Core Competencies</strong><br>
+        8+ years of entrepreneurial experience across product, R&D, sales, and branding. Proven track record in global market expansion, business innovation, team leadership, and supply chain optimization.<br>
+        <ul>
+          <li>Global Market Expansion: Led business development in Oceania, Europe, and the US, building long-term partnerships and providing stable cash flow for innovation projects.</li>
+          <li>Innovation Engine: Pioneered a virtual fitting + pre-sale + designer incubation model for the fashion industry, solving industry pain points and driving sustainable business growth. Achieved breakthroughs in both WeChat Official Account and Video Channel operations, accumulating high-quality followers and validating monetization.</li>
+          <li>Resilient Leadership: Led remote teams to deliver complex influencer and private domain projects with 100% completion rate.</li>
+          <li>Supply Chain Optimization: Maintained 90%+ on-time delivery, 95%+ customer satisfaction, and reduced operating costs by 15%.</li>
+        </ul>
         <div style="margin-top:16px;">
           <a href="experience.html">Experience</a> | <a href="projects.html">Projects</a>
         </div>
@@ -148,3 +205,5 @@
     }
     btnZh.click();
   </script>
+</body>
+</html>

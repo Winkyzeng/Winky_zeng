@@ -188,16 +188,29 @@
     }
     function checkCode() {
       const code = document.getElementById('codeInput').value.trim();
-      const links = {
-        'china2024': '<a href="https://lark.cn/your-china-link" target="_blank" style="color:#00e6c3;">国内简历下载</a>',
-        'global2024': '<a href="https://lark.com/your-global-link" target="_blank" style="color:#00e6c3;">Global Resume Download</a>',
-        'allpdf': '<a href="https://lark.cn/your-allpdf-link" target="_blank" style="color:#00e6c3;">全部PDF下载</a>'
-      };
-      if (links[code]) {
-        document.getElementById('downloadLinks').innerHTML = '下载链接：<br>' + links[code];
-      } else {
-        document.getElementById('downloadLinks').innerHTML = '<span style="color:#ff5252;">验证码错误，请联系微信或邮箱获取！</span>';
-      }
+       // 所有文件的统一密码
+  if (code === 'w13148806') {
+    document.getElementById('downloadLinks').innerHTML = `
+      <a href="resume-cn.pdf" target="_blank" style="color:#00e6c3;">中文简历</a><br>
+      <a href="certificate.pdf" target="_blank" style="color:#00e6c3;">证书资料</a><br>
+      <a href="work1.pdf" target="_blank" style="color:#00e6c3;">产业研究-媒体运营工作经历1</a><br>
+      <a href="work2-1.pdf" target="_blank" style="color:#00e6c3;">私域运营工作经历2</a><br>
+      <a href="work2-2.pdf" target="_blank" style="color:#00e6c3;">品牌PR工作经历3</a><br>
+      <a href="work3.pdf" target="_blank" style="color:#00e6c3;">外贸工作经历4</a><br>
+      <a href="project-supplement.pdf" target="_blank" style="color:#00e6c3;">虚拟商城项目补充说明</a>
+    `;
+  }
+  // 单个文件密码
+  else if (code === 'resume-cn') {
+    document.getElementById('downloadLinks').innerHTML = `<a href="resume-cn.pdf" target="_blank" style="color:#00e6c3;">中文简历</a>`;
+  }
+  else if (code === 'certificatepdf') {
+    document.getElementById('downloadLinks').innerHTML = `<a href="certificate.pdf" target="_blank" style="color:#00e6c3;">证书资料</a>`;
+  }
+  // ...其它单独密码...
+  else {
+    document.getElementById('downloadLinks').innerHTML = '<span style="color:#ff5252;">密码错误，请联系微信或邮箱获取！</span>';
+  }
     }
     document.getElementById('avatar').onclick = function() {
       showSection('resume');
@@ -207,4 +220,5 @@
   </script>
 </body>
 </html>
+
 

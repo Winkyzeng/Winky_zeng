@@ -193,6 +193,13 @@
     function checkCode() {
       const code = document.getElementById('codeInput').value.trim();
        // 所有文件的统一密码
+   if (code === 'resume') {
+        document.getElementById('downloadLinks').innerHTML = `
+            <a href="winky-resume-cn.pdf" target="_blank" style="color:#00e6c3;">曾文芳中文简历</a><br>
+            <a href="winky-resume-en.pdf" target="_blank" style="color:#00e6c3;">Winky-Resume</a>
+        `;
+        return; // 添加return语句确保执行后退出函数
+    }
   if (code === '1314-8806') {
     document.getElementById('downloadLinks').innerHTML = `
       <a href="winky-resume-cn.pdf" target="_blank" style="color:#00e6c3;">曾文芳中文简历</a><br>
@@ -237,6 +244,7 @@
   </script>
 </body>
 </html>
+
 
 
 

@@ -162,6 +162,8 @@
       downloadTip.innerText = '请通过以下方式联系 Winky 获取最新下载码。';
       contact.innerHTML = '微信：Winky_zeng<br>邮箱：winkyzeng@yeah.net';
       modalTip.innerText = '请输入验证码获取简历下载链接：';
+      codeInput.placeholder = '输入验证码';
+      modalConfirmBtn.innerText = '确定';
       resumeZh.style.display = '';
       resumeEn.style.display = 'none';
       navLinks.innerHTML = '<a href="experience-cn.html">工作经历</a> | <a href="projects-cn.html">项目案例</a>';
@@ -175,6 +177,8 @@
       downloadTip.innerText = 'Contact Winky via WeChat or Email to get the latest download code.';
       contact.innerHTML = 'WeChat: Winky_zeng<br>Email: winkyzeng@yeah.net';
       modalTip.innerText = 'Enter the code to get the download link:';
+      codeInput.placeholder = 'Enter the code';
+      modalConfirmBtn.innerText = 'Confirm';
       resumeZh.style.display = 'none';
       resumeEn.style.display = '';
       navLinks.innerHTML = '<a href="experience.html">Experience</a> | <a href="projects.html">Projects</a>';
@@ -192,16 +196,16 @@
     }
     function checkCode() {
       const code = document.getElementById('codeInput').value.trim();
-       // 所有文件的统一密码
-   if (code === 'resume') {
+  // 所有文件的统一密码
+    if (code === 'resume') {
         document.getElementById('downloadLinks').innerHTML = `
             <a href="winky-resume-cn.pdf" target="_blank" style="color:#00e6c3;">曾文芳中文简历</a><br>
             <a href="winky-resume-en.pdf" target="_blank" style="color:#00e6c3;">Winky-Resume</a>
         `;
-        return; // 添加return语句确保执行后退出函数
+        // 移除return语句，让其他条件也能被检查
     }
-  if (code === '1314-8806') {
-    document.getElementById('downloadLinks').innerHTML = `
+    else if (code === '1314-8806') {
+        document.getElementById('downloadLinks').innerHTML = `
       <a href="winky-resume-cn.pdf" target="_blank" style="color:#00e6c3;">曾文芳中文简历</a><br>
       <a href="winky-resume-en.pdf" target="_blank" style="color:#00e6c3;">Winky-Resume</a><br>
       <a href="certificate.pdf" target="_blank" style="color:#00e6c3;">证书资料-Certificate</a><br>
@@ -244,6 +248,7 @@
   </script>
 </body>
 </html>
+
 
 
 

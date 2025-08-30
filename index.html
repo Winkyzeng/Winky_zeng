@@ -197,14 +197,16 @@
     function checkCode() {
       const code = document.getElementById('codeInput').value.trim();
   // 所有文件的统一密码
-    if (code === 'resume') {
-        document.getElementById('downloadLinks').innerHTML = `
-            <a href="winky-resume-cn.pdf" target="_blank" style="color:#00e6c3;">曾文芳中文简历</a><br>
-            <a href="winky-resume-en.pdf" target="_blank" style="color:#00e6c3;">Winky-Resume</a>
-        `;
-        // 移除return语句，让其他条件也能被检查
-    }
-    else if (code === '1314-8806') {
+   if (code === 'resume') {
+    document.getElementById('downloadLinks').innerHTML = `
+        <a href="winky-resume-cn.pdf" target="_blank" style="color:#00e6c3;">曾文芳中文简历</a><br>
+        <a href="winky-resume-en.pdf" target="_blank" style="color:#00e6c3;">Winky-Resume</a>
+    `;
+}
+// 移除return语句，确保其他条件也能被检查
+else if (code === '1314-8806') {
+    // 这里添加1314-8806密码对应的下载链接
+}
         document.getElementById('downloadLinks').innerHTML = `
       <a href="winky-resume-cn.pdf" target="_blank" style="color:#00e6c3;">曾文芳中文简历</a><br>
       <a href="winky-resume-en.pdf" target="_blank" style="color:#00e6c3;">Winky-Resume</a><br>
@@ -237,7 +239,12 @@
   }
   // ...其它单独密码...
   else {
-    document.getElementById('downloadLinks').innerHTML = '<span style="color:#ff5252;">密码错误，请联系微信或邮箱获取！</span>';
+  // 根据当前语言显示错误提示
+               if (currentLanguage === 'zh') {
+                    document.getElementById('downloadLinks').innerHTML = '<span style="color:#ff5252;">密码错误，请联系微信或邮箱获取！</span>';
+                } else {
+                    document.getElementById('downloadLinks').innerHTML = '<span style="color:#ff5252;">Incorrect password, please contact via WeChat or email!</span>';
+                }
   }
     }
     document.getElementById('avatar').onclick = function() {
@@ -248,6 +255,7 @@
   </script>
 </body>
 </html>
+
 
 
 

@@ -206,11 +206,18 @@
       <a href="project-supplement.pdf" target="_blank" style="color:#00e6c3;">虚拟商城项目补充说明</a>
     `;
   }
+      // 使用统一密码访问所有文件
+            if (code === 'resume') {
+                document.getElementById('downloadLinks').innerHTML = `
+                    <a href="winky-resume-cn.pdf" target="_blank">曾文芳中文简历</a>
+                    <a href="winky-resume-en.pdf" target="_blank">Winky-Resume</a>
+                       `;
+  }
   // 单个文件密码
   else if (code === 'resume-cn') {
     document.getElementById('downloadLinks').innerHTML = `<a href="winky-resume-cn.pdf" target="_blank" style="color:#00e6c3;">曾文芳中文简历</a>`;
   }
-  else if (code === 'resume') {
+  else if (code === 'resume-en') {
     document.getElementById('downloadLinks').innerHTML = `<a href="winky-resume-en.pdf" target="_blank" style="color:#00e6c3;">Winky-Resume</a>`;
   }
     
@@ -230,6 +237,7 @@
   </script>
 </body>
 </html>
+
 
 
 

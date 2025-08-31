@@ -17,7 +17,7 @@
     .resume-section { margin-bottom: 24px; text-align: left;}
     .resume-link { color: #1e90ff; cursor: pointer; text-decoration: underline; transition: color 0.2s;}
     .resume-link:hover { color: #00e6c3;}
-    .download-btn { background: #1e90ff; color: #fff; border: none; border-radius: 6px; padding: 10px 28px; font-size: 16px; cursor: pointer; margin-top: 16px; transition: background 0.2s;}
+    .download-btn { background: #1e90ff; color: #fff; border: none; border-radius: 6px; padding: 10px 28px; font-size: 16px; cursor: button; margin-top: 16px; transition: background 0.2s;}
     .download-btn:hover { background: #00e6c3; color: #10131a;}
     .contact { margin-top: 32px; font-size: 15px; color: #b2ebf2;}
     .nav-links { margin: 24px 0 0 0; font-size: 17px;}
@@ -53,11 +53,11 @@
     </div>
     <div class="resume-section" id="resume-section" style="display:none;">
        <div id="resume-content-zh" style="color:#e0f7fa !important">
-        <strong>核心能力</strong><br>
+        <strong>核心能力</极简><br>
         8年连续创业实战经验，贯穿产、研、销、推广、售后全链路<br>
         ● 全球市场开拓：主导开拓大洋洲、欧洲、美国高价值客户市场，建立稳定合作<br>
         ● 供应链优化：订单交付准时率90%+，客户满意度95%+，降低运营成本<br>
-        ● 全球生态构建：首创“虚拟试衣+预售+设计师孵化”闭环平台，解决行业痛点、打造良性循环服装生态<br>
+        ● 全球生态构建：首创"虚拟试衣+预售+设计师孵化"闭环平台，解决行业痛点、打造良性循环服装生态<br>
         ● 高质量用户认证：公众号汇聚了5800+垂直行业粉丝(10%管理层)|视频号沉淀了3700+高互动粉丝<br>
         ● 复合业务协同：外贸出口+服装全链路+数字内容运营+社交媒体营销四维整合<br>
         ● 韧性交付能力：带领远程团队100%完成复杂任务交付<br>
@@ -109,7 +109,7 @@
          <li>8 Years Serial Entrepreneurship: Hands-on experience spanning product development, R&D, sales, promotion and after-sales service.</li>
          <li>Global Market Expansion: Established profitable partnerships in Oceania, Europe, and US markets.</li>
          <li>Supply Chain Optimization: 90%+ on-time delivery, 95%+ client satisfaction with reduced operational costs.</li>
-         <li>Innovative Ecosystem Development: Pioneered the“Virtual Try-On + Pre-sale + Designer Incubation & development chain platform" virtual shopping mall project, resolving industry pain points and fostering a sustainable apparel ecosystem.</li>
+         <li>Innovative Ecosystem Development: Pioneered the"Virtual Try-On + Pre-sale + Designer Incubation & development chain platform" virtual shopping mall project, resolving industry pain points and fostering a sustainable apparel ecosystem.</li>
          <li>High-Quality User Acquisition: Built audiences of 5,800+ industry followers (10% management) on WeChat Official Account and 3,700+ highly engaged followers on Video Channel.</li>
          <li>Integrated Business Synergy: Combined expertise in export trade, full apparel supply chain, digital content operations, and social media marketing.</li>
          <li>Resilient Execution: Led remote team to achieve 100% delivery of complex tasks.</li>
@@ -126,21 +126,21 @@
     <div class="contact" id="contact">
       微信：Winky_zeng<br>
       邮箱：winkyzeng@yeah.net
-    </div>
+    </极简>
     <div class="nav-links" id="nav-links">
       <a href="experience-cn.html">工作经历</a> | <a href="projects-cn.html">项目案例</a>
     </div>
   </div>
   <!-- 验证码弹窗 -->
-  <div class="modal" id="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal()">&times;</span>
-      <div id="modal-tip">请输入验证码获取简历下载链接：</div>
-      <input type="text" id="codeInput" placeholder="输入验证码">
-      <button onclick="checkCode()">确定</button>
-      <div id="downloadLinks" style="margin-top:16px;"></div>
-    </div>
+<div class="modal" id="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <div id="modal-tip">请输入验证码获取简历下载链接：</div>
+    <input type="text" id="codeInput" placeholder="输入验证码">
+    <button onclick="checkCode()" id="confirm-btn">确定</button>
+    <div id="downloadLinks" style="margin-top:16px;"></div>
   </div>
+</div>
   <script>
     const btnZh = document.getElementById('btn-zh');
     const btnEn = document.getElementById('btn-en');
@@ -153,7 +153,12 @@
     const resumeZh = document.getElementById('resume-content-zh');
     const resumeEn = document.getElementById('resume-content-en');
     const navLinks = document.getElementById('nav-links');
+    
+    // 当前语言状态
+    let currentLang = 'zh';
+    
     btnZh.onclick = function() {
+      currentLang = 'zh';
       btnZh.classList.add('active');
       btnEn.classList.remove('active');
       mainTitle.innerText = '曾文芳';
@@ -162,13 +167,15 @@
       downloadTip.innerText = '请通过以下方式联系 Winky 获取最新下载码。';
       contact.innerHTML = '微信：Winky_zeng<br>邮箱：winkyzeng@yeah.net';
       modalTip.innerText = '请输入验证码获取简历下载链接：';
-      codeInput.placeholder = '输入验证码';
-      modalConfirmBtn.innerText = '确定';
+      document.getElementById('codeInput').placeholder = '输入验证码';
+      document.getElementById('confirm-btn').innerText = '确定';
       resumeZh.style.display = '';
       resumeEn.style.display = 'none';
       navLinks.innerHTML = '<a href="experience-cn.html">工作经历</a> | <a href="projects-cn.html">项目案例</a>';
     }
+    
     btnEn.onclick = function() {
+      currentLang = 'en';
       btnEn.classList.add('active');
       btnZh.classList.remove('active');
       mainTitle.innerText = 'Winky Zeng';
@@ -177,94 +184,75 @@
       downloadTip.innerText = 'Contact Winky via WeChat or Email to get the latest download code.';
       contact.innerHTML = 'WeChat: Winky_zeng<br>Email: winkyzeng@yeah.net';
       modalTip.innerText = 'Enter the code to get the download link:';
-      codeInput.placeholder = 'Enter the code';
-      modalConfirmBtn.innerText = 'Confirm';
+      document.getElementById('codeInput').placeholder = 'Enter verification code';
+      document.getElementById('confirm-btn').innerText = 'Confirm';
       resumeZh.style.display = 'none';
       resumeEn.style.display = '';
       navLinks.innerHTML = '<a href="experience.html">Experience</a> | <a href="projects.html">Projects</a>';
     }
+    
     function showSection(section) {
       document.getElementById('resume-section').style.display = 'block';
     }
+    
     function openModal() {
       document.getElementById('modal').style.display = 'flex';
       document.getElementById('downloadLinks').innerHTML = '';
       document.getElementById('codeInput').value = '';
     }
+    
     function closeModal() {
       document.getElementById('modal').style.display = 'none';
     }
+    
     function checkCode() {
       const code = document.getElementById('codeInput').value.trim();
-       // 所有文件的统一密码
-  if (code === '1314-8806') {
-    document.getElementById('downloadLinks').innerHTML = `
-      <a href="winky-resume-cn.pdf" target="_blank" style="color:#00e6c3;">曾文芳中文简历</a><br>
-      <a href="winky-resume-en.pdf" target="_blank" style="color:#00e6c3;">Winky-Resume</a><br>
-      <a href="certificate.pdf" target="_blank" style="color:#00e6c3;">证书资料-Certificate</a><br>
-      <a href="work3.pdf" target="_blank" style="color:#00e6c3;">外贸工作经历</a><br>
-      <a href="work3-en.pdf" target="_blank" style="color:#00e6c3;">Foreign Trade work experience</a><br>
-      <a href="work1.pdf" target="_blank" style="color:#00e6c3;">产业纽带-行业研究分析平台</a><br>
-      <a href="work2-1.pdf" target="_blank" style="color:#00e6c3;">私域运营项目经历</a><br>
-      <a href="work2-2.pdf" target="_blank" style="color:#00e6c3;">品牌PR项目经历</a><br>
-      <a href="project-supplement.pdf" target="_blank" style="color:#00e6c3;">虚拟商城项目补充说明</a>
-    `;
-  }
- // 单个文件密码
-  else if (code === 'resume-cn') {
-    document.getElementById('downloadLinks').innerHTML = `<a href="winky-resume-cn.pdf" target="_blank" style="color:#00e6c3;">曾文芳中文简历</a>`;
-  }
-  else if (code === 'resume-en') {
-    document.getElementById('downloadLinks').innerHTML = `<a href="winky-resume-en.pdf" target="_blank" style="color:#00e6c3;">Winky-Resume</a>`;
-  }
-    
-  else if (code === 'certificate') {
-    document.getElementById('downloadLinks').innerHTML = `<a href="certificate.pdf" target="_blank" style="color:#00e6c3;">证书资料-Certificate</a>`;
-  }
-  // ...其它单独密码...
-  else {
-  // 根据当前语言显示错误提示
-               if (currentLanguage === 'zh') {
-                    document.getElementById('downloadLinks').innerHTML = '<span style="color:#ff5252;">密码错误，请联系微信或邮箱获取！</span>';
-                } else {
-                    document.getElementById('downloadLinks').innerHTML = '<span style="color:#ff5252;">Incorrect password, please contact via WeChat or email!</span>';
-                }
-  }
+      
+      // 所有文件的统一密码
+      if (code === '1314-8806') {
+        document.getElementById('downloadLinks').innerHTML = `
+          <a href="winky-resume-en.pdf" target="_blank" style="color:#00e6c3;">Winky-Resume</a><br>
+          <a href="resume-cn.pdf" target="_blank" style="color:#00e6c3;">曾文芳中文简历</a><br>
+          <a href="certificate.pdf" target="_blank" style="color:#00e6c3;">证书资料-Certificate</a><br>
+          <a href="work1.pdf" target="_blank" style="color:#00e6c3;">产业纽带-行业研究分析平台</a><br>
+          <a href="work3.pdf" target="_blank" style="color:#00e6c3;">外贸工作经历</a><br>
+          <a href="work3-en.pdf" target="_blank" style="color:#00e6c3;">Foreign Trade work experience</a><br>
+          <a href="work2-1.pdf" target="_blank" style="color:#00e6c3;">私域运营项目经历</a><br>
+          <a href="work2-2.pdf" target="_blank" style="color:#00e6c3;">品牌PR项目经历</a><br>
+          <a href="project-supplement.pdf" target="_blank" style="color:#00e6c3;">虚拟商城项目补充说明</a>
+        `;
+      }
+      // 单个文件密码
+      else if (code === 'resume-cn') {
+        document.getElementById('downloadLinks').innerHTML = `<a href="resume-cn.pdf" target="_blank" style="color:#00e6c3;">曾文芳中文简历</a>`;
+      }
+      else if (code === 'resume-en') {
+        document.getElementById('downloadLinks').innerHTML = `<a href="winky-resume-en.pdf" target="_blank" style="color:#00e6c3;">Winky-Resume</a>`;
+      }
+      else if (code === 'certificate') {
+        document.getElementById('downloadLinks').innerHTML = `<a href="certificate.pdf" target="_blank" style="color:#00e6c3;">证书资料-Certificate</a>`;
+      }
+      // 其他情况显示错误提示
+      else {
+        if(currentLang === 'zh') {
+          // 中文错误提示
+          document.getElementById('downloadLinks').innerHTML = 
+            '<span style="color:#ff5252;">密码错误，请联系微信或邮箱获取！</span>';
+        } else {
+          // 英文错误提示
+          document.getElementById('downloadLinks').innerHTML = 
+            '<span style="color:#ff5252;">Incorrect code, please contact via WeChat or Email to get the correct one!</span>';
+        }
+      }
     }
+    
     document.getElementById('avatar').onclick = function() {
       showSection('resume');
       window.scrollTo({top: 200, behavior: 'smooth'});
     }
+    
+    // 初始化中文页面
     btnZh.click();
   </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -4,7 +4,33 @@
   <meta charset="UTF-8">
   <title>曾文芳 | Winky Zeng 个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <!-- Google Analytics 代码 - 升级版（支持多个域名） -->
+ <!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>曾文芳 | Winky Zeng 个人博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- ########## 在这里插入技术防护代码 (Start) ########## -->
+    <script>
+        // 禁用右键菜单
+        document.addEventListener('contextmenu', function(e) { e.preventDefault(); });
+        // 禁用文本选择
+        document.addEventListener('selectstart', function(e) { e.preventDefault(); });
+        // 禁用键盘复制快捷键
+        document.addEventListener('keydown', function(e) {
+            if (e.ctrlKey && (e.key === 'c' || e.key === 'u' || e.key === 's')) {
+                e.preventDefault();
+            }
+        });
+    </script>
+    <!-- ########## 在这里插入技术防护代码 (End) ########## -->
+    
+    <!-- Google Analytics 代码- 升级版(支持多个域名) -->
+    <script src="https://www.googletagmanager.com/tagda/js?id=G-6QPEGLTTPF"></script>
+    <script>
+    ... // 您原有的GA代码
+  <!-- Google Analytics 代码 - 升级版（支持多个域名） -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-6QPEGLTTPF"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -266,8 +292,46 @@
     // 初始化中文页面
     btnZh.click();
   </script>
+    ... // 您原有的其他代码
+
+    <!-- ########## 在这里插入法律声明代码 (Start) ########## -->
+    <div style="text-align: center; padding: 20px 0; font-size: 0.8em; color: #666; border-top: 1px solid #eee; margin-top: 40px;">
+        <p>© 2024 Winky Zeng (曾文芳). 所有内容受版权保护，遵循 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh" style="color: #00aaff;" target="_blank">CC BY-NC-ND 4.0</a> 许可协议。<br>未经明确书面许可，禁止复制、转载或用于任何商业目的。侵权必究。</p>
+    </div>
+    <!-- ########## 在这里插入法律声明代码 (End) ########## -->
+
+    ... // 您原有的其他脚本
 </body>
 </html>
+</body>
+  ... // 您原有的其他代码
+    </script>
+    
+    <!-- ########## 在这里插入动态水印代码 (Start) ########## -->
+    <script>
+        // 创建动态水印
+        function createWatermark() {
+            const watermark = document.createElement('div');
+            watermark.style.position = 'fixed';
+            watermark.style.bottom = '10px';
+            watermark.style.right = '10px';
+            watermark.style.opacity = '0.2';
+            watermark.style.zIndex = '9999';
+            watermark.style.pointerEvents = 'none';
+            watermark.style.fontSize = '10px';
+            watermark.style.color = '#cccccc';
+            watermark.textContent = '© Winky Zeng - winkyzeng@yeah.net'; // 您的标识
+            document.body.appendChild(watermark);
+        }
+        // 页面加载后执行
+        window.onload = createWatermark;
+    </script>
+    <!-- ########## 在这里插入动态水印代码 (End) ########## -->
+
+</body>
+</html>
+</html>
+
 
 
 

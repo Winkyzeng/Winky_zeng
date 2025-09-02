@@ -13,17 +13,28 @@
     
     <!-- ########## 在这里插入技术防护代码 (Start) ########## -->
     <script>
-        // 禁用右键菜单
-        document.addEventListener('contextmenu', function(e) { e.preventDefault(); });
-        // 禁用文本选择
-        document.addEventListener('selectstart', function(e) { e.preventDefault(); });
-        // 禁用键盘复制快捷键
-        document.addEventListener('keydown', function(e) {
-            if (e.ctrlKey && (e.key === 'c' || e.key === 'u' || e.key === 's')) {
-                e.preventDefault();
-            }
-        });
-    </script>
+// 更智能的防护：只在用户选择文本或右键点击内容时触发
+document.addEventListener('contextmenu', function(e) {
+  // 检查是否点击的是按钮、链接或输入框，如果是则放行
+  if (e.target.tagName === 'BUTTON' || e.target.tagName === 'A' || e.target.tagName === 'INPUT') {
+    return true;
+  }
+  e.preventDefault();
+  alert('为保护原创内容，右键功能已禁用。');
+});
+
+document.addEventListener('keydown', function(e) {
+  // 允许使用Ctrl+C复制输入框中的文本（如下载码）
+  if (e.ctrlKey && e.key === 'c' && e.target.tagName === 'INPUT') {
+    return true;
+  }
+  // 阻止其他Ctrl+C操作
+  if (e.ctrlKey && e.key === 'c') {
+    e.preventDefault();
+    alert('为保护原创内容，复制功能已禁用。请联系winkyzeng@yeah.net获取授权。');
+  }
+});
+</script>
     <!-- ########## 在这里插入技术防护代码 (End) ########## -->
     
     <!-- Google Analytics 代码- 升级版(支持多个域名) -->
@@ -291,9 +302,9 @@
     btnZh.click();
   </script>
     <!-- ########## 在这里插入法律声明代码 (Start) ########## -->
-    <div style="text-align: center; padding: 20px 0; font-size: 0.8em; color: #666; border-top: 1px solid #eee; margin-top: 40px;">
-        <p>© 2025 Winky Zeng (曾文芳). 所有内容受版权保护，遵循 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh" style="color: #00aaff;" target="_blank">CC BY-NC-ND 4.0</a> 许可协议。<br>未经明确书面许可，禁止复制、转载或用于任何商业目的。侵权必究。</p>
-    </div>
+    <div style="text-align: center; padding: 12px 20px; margin-top: 0; font-size: 0.75rem; line-height: 1.5; color: #888; background-color: #f9f9f9; border-top: 1px solid #eee;">
+    <p style="margin: 0;">© 2025 Winky Zeng (曾文芳). All rights reserved. Content is protected under the <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh" style="color: #4dabf7; text-decoration: none;">CC BY-NC-ND 4.0</a> license. Unauthorized adaptation, commercial use, and distribution are prohibited. Sharing the original link is permitted and welcomed.</p>
+</div>
     <!-- ########## 在这里插入法律声明代码 (End) ########## -->
 </body>
 </html>
@@ -322,6 +333,7 @@
 </body>
 </html>
 </html>
+
 
 
 

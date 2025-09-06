@@ -317,10 +317,73 @@
     <!-- ########## 在这里插入动态水印代码 (End) ########## -->
   <script>
   // 初始化Vercel Analytics
-  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+ function acceptCookies() {
+    setCookie("cookie_consent", "true", 365);
+    setCookie("analytics_consent", "true", 365);
+    document.getElementById('cookie-consent-banner').style.display = 'none';
+    
+    // --- 动态加载Vercel Analytics的代码 ---
+    // 1. 执行初始化 (就是您图片3第320行的代码)
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    
+    // 2. 创建并加载脚本
+    var script = document.createElement('script');
+    script.src = 'https://va.vercel-scripts.com/v1/script.js';
+    script.defer = true;
+    document.head.appendChild(script);
+    // --- 代码结束 ---
+}
+</script>
+  <!-- 在<head>中添加 -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/solinumasso/silktide-consent-manager@main/silktide-consent-manager.css">
+
+<!-- 在<body>结束前添加 -->
+<script src="https://cdn.jsdelivr.net/gh/solinumasso/silktide-consent-manager@main/silktide-consent-manager.js"></script>
+<script>
+    silktideCookieBannerManager.updateCookieBannerConfig({
+        cookieTypes: [
+            {
+                id: 'essential',
+                name: '必要 Cookies',
+                description: '这些Cookies对于网站的基本运行是必不可少的，无法关闭。',
+                required: true,
+                defaultValue: true,
+            },
+            {
+                id: 'analytics',
+                name: '分析 Cookies',
+                description: '这些Cookies帮助我们了解访问者如何与网站互动，用于改善网站体验。',
+                defaultValue: false, // 默认不勾选，等待用户同意
+                onAccept: function() {
+                    // 用户同意分析Cookies后，加载Vercel Analytics
+                    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+                    var script = document.createElement('script');
+                    script.src = 'https://va.vercel-scripts.com/v1/script.js';
+                    script.defer = true;
+                    document.head.appendChild(script);
+                },
+                onReject: function() {
+                    // 用户拒绝分析Cookies时可执行的操作，例如设置禁止跟踪的Cookie
+                    document.cookie = "analytics_optout=true; path=/; max-age=31536000";
+                }
+            }
+        ],
+        text: {
+            banner: {
+                description: `<p>我们使用Cookies来提升您的浏览体验。请选择您希望接受的Cookie类型。</p>`,
+                acceptAllButtonText: '接受所有',
+                rejectNonEssentialButtonText: '仅接受必要的',
+                preferencesButtonText: '自定义偏好'
+            }
+        },
+        position: {
+            banner: 'bottomRight'
+        }
+    });
 </script>
 </body>
 </html>
+
 
 
 

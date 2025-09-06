@@ -21,6 +21,8 @@
   });
 </script>
   <style>
+    <!-- 添加Vercel Analytics脚本 -->
+<script defer src="https://va.vercel-scripts.com/v1/script.js"></script>
     body { background: #10131a; color: #e0f7fa; font-family: 'Segoe UI', Arial, sans-serif; margin: 0; padding: 0;}
     .container { max-width: 600px; margin: 40px auto; background: #181f2b; border-radius: 16px; box-shadow: 0 4px 24px rgba(0,0,0,0.4); padding: 32px; text-align: center;}
     .avatar { width: 120px; height: 120px; border-radius: 50%; border: 4px solid #00e6c3; margin: 0 auto 24px; background: url('myphoto.jpg') center/cover no-repeat; box-shadow: 0 0 16px #00e6c3; cursor: pointer; transition: box-shadow 0.3s;}
@@ -311,9 +313,14 @@
         window.onload = createWatermark;
     </script>
     <!-- ########## 在这里插入动态水印代码 (End) ########## -->
+  <script>
+  // 初始化Vercel Analytics
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+</script>
 </body>
 </html>
-</html>
+
+
 
 
 
